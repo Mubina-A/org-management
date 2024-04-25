@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-// const authMiddleware = require('../middlewares/authMiddleware');
-// const validators = require('../validators');
 const staffController = require('../controllers/staff');
 const { ACTION } = require("../constants");
 const {verifyToken, hasRole, passport} = require('../config/passport');

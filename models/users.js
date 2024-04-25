@@ -22,18 +22,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  organizationId: {
+  organizationId: [{
     type: Number,
     ref: 'Organization'
-  },
+  }],
   roleId: {
     type: Number,
     ref: 'role'
   },
-  groupId: [{
+  groupId: {
     type: Number,
     ref: 'role'
-  }],
+  },
   isActive: { type: Boolean, default: true },
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now}

@@ -8,7 +8,7 @@ class StaffController {
             console.log('--------------------------',req.body)
             const result = await staffService.staffLogin(req.body); 
             console.log("result",result)
-            res.json({ statusCode: result.statusCode, token: result.data, message: result.statusMessage });
+            res.json({ statusCode: result.statusCode, token: result.data, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }
@@ -16,8 +16,8 @@ class StaffController {
 
     async  getOrganizationById(req, res) {
         try {
-            const result = await staffService.getOrganizationById({...req.query,}); 
-            res.json({ statusCode: result.statusCode, data: result.data, message: result.statusMessage });
+            const result = await staffService.getOrganizationById({...req.query, userData: req.user}); 
+            res.json({ statusCode: result.statusCode, data: result.data, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }
@@ -25,9 +25,9 @@ class StaffController {
 
     async  getAllOrganization(req, res) {
         try {
-            const result = await staffService.getAllOrganization(); 
+            const result = await staffService.getAllOrganization({userData: req.user}); 
             console.log("result",result)
-            res.json({ statusCode: result.statusCode, data: result.data, message: result.statusMessage });
+            res.json({ statusCode: result.statusCode, data: result.data, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }
@@ -36,8 +36,8 @@ class StaffController {
     async  deleteOrganization(req, res) {
         try {
             console.log("req",req)
-            const result = await staffService.deleteOrganization({...req.query,}); 
-            res.json({ statusCode: result.statusCode, data: result.data, message: result.statusMessage });
+            const result = await staffService.deleteOrganization({...req.query,userData: req.user}); 
+            res.json({ statusCode: result.statusCode, data: result.data, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }
@@ -45,8 +45,8 @@ class StaffController {
 
     async  hardDeleteOrganization(req, res) {
         try {
-            const result = await staffService.hardDeleteOrganization({...req.query,}); 
-            res.json({ statusCode: result.statusCode, data: result.data, message: result.statusMessage });
+            const result = await staffService.hardDeleteOrganization({...req.query,userData: req.user}); 
+            res.json({ statusCode: result.statusCode, data: result.data, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }
@@ -55,9 +55,9 @@ class StaffController {
     async  createOrganization(req, res) {
         try {
             console.log("req",req.body)
-            const result = await staffService.createOrganization({...req.body}); 
+            const result = await staffService.createOrganization({...req.body,userData: req.user}); 
             console.log("result",result)
-            res.json({ statusCode: result.statusCode, statusMessage: result.statusMessage, message: result.statusMessage });
+            res.json({ statusCode: result.statusCode, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }
@@ -66,9 +66,9 @@ class StaffController {
     async  editOrganization(req, res) {
         try {
             console.log("req",req.body)
-            const result = await staffService.editOrganization({...req.body}); 
+            const result = await staffService.editOrganization({...req.body,userData: req.user}); 
             console.log("result",result)
-            res.json({ statusCode: result.statusCode, statusMessage: result.statusMessage, message: result.statusMessage });
+            res.json({ statusCode: result.statusCode, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }
@@ -77,7 +77,7 @@ class StaffController {
     async  getUserById(req, res) {
         try {
             const result = await staffService.getUserById({...req.query,}); 
-            res.json({ statusCode: result.statusCode, data: result.data, message: result.statusMessage });
+            res.json({ statusCode: result.statusCode, data: result.data, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }
@@ -89,7 +89,7 @@ class StaffController {
             console.log('--------------------------',req.body)
             const result = await staffService.userLogin(req.body); 
             console.log("result",result)
-            res.json({ statusCode: result.statusCode, token: result.data, message: result.statusMessage });
+            res.json({ statusCode: result.statusCode, token: result.data, statusMessage: result.statusMessage });
         } catch(err) {
             res.json({  statusCode: result.statusCode, statusMessage: result.statusMessage, });
         }

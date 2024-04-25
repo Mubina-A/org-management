@@ -26,10 +26,10 @@ const staffSchema = new mongoose.Schema({
       type: Number,
       ref: 'Organization'
     },
-    groupId: [{
+    groupId: {
       type: Number,
       ref: 'Organization'
-    }],
+    },
     isActive: { type: Boolean, default: true },
     createdAt: {type: Date, default: Date.now},
     updatedAt: {type: Date, default: Date.now}

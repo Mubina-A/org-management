@@ -2,22 +2,22 @@ const mongoose = require('mongoose');
 
 const permissionSchema = new mongoose.Schema({
     permissionId: { type: Number, required: true, unique: true },
-    roleId: [{
+    roleId: {
         type: Number,
         ref: 'role'
-    }],
-    groupId: [{
+    },
+    groupId: {
         type: Number,
         ref: 'role'
-    }], 
-    privilegeId: [{
+    }, 
+    privilegeId: {
         type: Number,
         ref: 'role'
-    }],  
-    privilegeKey: [{
+    },  
+    privilegeKey: {
         type: String,
         ref: 'role'
-    }],  
+    },  
     isPermission: { type: Boolean, default: true },
     createdAt: {type: Date, default: Date.now},
     updatedAt: {type: Date, default: Date.now}
